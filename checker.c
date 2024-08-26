@@ -14,29 +14,17 @@
 
 bool isTemperatureOk(float temperature)
 {
-    if(temperature < TEMP_MIN || temperature > TEMP_MAX)
-    {
-        return NOT_OK;
-    }
-    return OK;
+    return (temperature >= TEMP_MIN  && temperature <= TEMP_MAX);
 }
 
 bool isSocOk(float soc)
 {
-    if(soc < SOC_MIN || soc > SOC_MAX)
-    {
-        return NOT_OK;
-    }
-    return OK;
+    return (soc >= SOC_MIN && soc <= SOC_MAX);
 }
 
 bool isChargeRateOk(float chargeRate)
 {
-    if(chargeRate > CHARGE_RATE)
-    {
-        return NOT_OK;
-    }
-    return OK;
+   return (chargeRate <= CHARGE_RATE);
 }
 
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
@@ -65,4 +53,5 @@ int main() {
   assert(!batteryIsOk(5, 85, 0));
   assert(!batteryIsOk(5, 70, 0.8));
   assert(!batteryIsOk(5, -70, 0.5));
+  
 }
